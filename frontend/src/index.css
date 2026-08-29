@@ -1,9 +1,34 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
+
+@theme {
+  --color-cyber-darkest: #05070D;
+  --color-cyber-darker: #0B0F19;
+  --color-cyber-card: #111827;
+  --color-cyber-cardHover: #162032;
+  --color-cyber-border: rgba(56, 189, 248, 0.15);
+  --color-cyber-borderGlow: rgba(56, 189, 248, 0.35);
+  --color-cyber-cyan: #00F2FE;
+  --color-cyber-cyanGlow: #4FACFE;
+  --color-cyber-emerald: #10B981;
+  --color-cyber-emeraldGlow: #34D399;
+  --color-cyber-amber: #F59E0B;
+  --color-cyber-amberGlow: #FBBF24;
+  --color-cyber-crimson: #EF4444;
+  --color-cyber-crimsonGlow: #F87171;
+  --color-cyber-purple: #8B5CF6;
+  --color-cyber-purpleGlow: #A78BFA;
+
+  --shadow-cyber-cyan: 0 0 25px -5px rgba(0, 242, 254, 0.3);
+  --shadow-cyber-emerald: 0 0 25px -5px rgba(16, 185, 129, 0.3);
+  --shadow-cyber-crimson: 0 0 25px -5px rgba(239, 68, 68, 0.35);
+  --shadow-cyber-card: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
 
 :root {
   color-scheme: dark;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
