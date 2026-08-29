@@ -14,11 +14,10 @@ services:
       - key: AI_THRESHOLD
         value: "0.65"
 
-  # 2. VoxShield AI — React + Vite Frontend Static Site (Free Tier)
+  # 2. VoxShield AI — React + Vite Frontend Static Site (Always Free)
   - type: web
     name: voxshield-ai-frontend
     runtime: static
-    plan: free
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
     envVars:
