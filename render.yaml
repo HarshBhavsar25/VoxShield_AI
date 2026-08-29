@@ -1,11 +1,12 @@
 services:
-  # 1. VoxShield AI — FastAPI Backend Web Service (Free Tier)
+  # 1. VoxShield AI — FastAPI Backend Web Service
   - type: web
     name: voxshield-ai-backend
     runtime: python
     plan: free
-    buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
@@ -14,12 +15,13 @@ services:
       - key: AI_THRESHOLD
         value: "0.65"
 
-  # 2. VoxShield AI — React + Vite Frontend Static Site (Always Free)
+  # 2. VoxShield AI — React + Vite Frontend Static Site
   - type: web
     name: voxshield-ai-frontend
     runtime: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
         fromService:

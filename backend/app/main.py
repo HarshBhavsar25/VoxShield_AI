@@ -19,7 +19,6 @@ async def lifespan(app: FastAPI):
     await init_db()
     print(f"[*] VoxShield AI Backend initialized. Database ready at {STORAGE_DIR}")
     yield
-    # Shutdown logic if needed
 
 app = FastAPI(
     title="VoxShield AI — API",
@@ -45,9 +44,6 @@ app.include_router(insights_router)
 # Audio File Streaming Endpoints
 @app.get("/api/audio/files/{filename}")
 async def get_audio_file(filename: str):
-    """
-    Serves audio files from uploads, synthesized, or sample directories.
-    """
     safe_filename = os.path.basename(filename)
     
     # Check sample files
@@ -92,3 +88,8 @@ async def health_check():
         "sih_problem": settings.SIH_PROBLEM_STATEMENT,
         "mode": "PRODUCTION_BASELINE_ENFORCE"
     }
+
+# Mount Frontend static distribution if present
+FRONTEND_DIST = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
+if FRONTEND_DIST.exists():
+    app.mount("/", StaticFiles(directory=str(FRONTEND_DIST), html=True), name="frontend")
